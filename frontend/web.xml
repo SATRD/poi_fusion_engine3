@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>fic2_fe_v3_frontend</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	<servlet>
+		<servlet-name>fic2_fe_v3_frontend_citysdk_cat</servlet-name>
+		<jsp-file>/citysdk/categories/search.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>fic2_fe_v3_frontend_citysdk_cat</servlet-name>
+		<url-pattern>/citysdk/categories/search</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>fic2_fe_v3_frontend_citysdk_pois</servlet-name>
+		<jsp-file>/citysdk/pois/search.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>fic2_fe_v3_frontend_citysdk_pois</servlet-name>
+		<url-pattern>/citysdk/pois/search</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>fic2_fe_v3_frontend_citysdk_test</servlet-name>
+		<jsp-file>/citysdk/test/index.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>fic2_fe_v3_frontend_citysdk_test</servlet-name>
+		<url-pattern>/citysdk/test/index</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>fic2_fe_v3_frontend_fiware_search</servlet-name>
+		<jsp-file>/fiware/search.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>fic2_fe_v3_frontend_fiware_search</servlet-name>
+		<url-pattern>/fiware/search/*</url-pattern>
+	</servlet-mapping>
+	<!-- ENABLE CORS -->
+	<filter>
+		<filter-name>CorsFilter</filter-name>
+		<filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>CorsFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+</web-app>

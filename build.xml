@@ -1,0 +1,194 @@
+<project name="FIC2_FE_SERVICE_V03" default="build-all" basedir=".">
+    <description>
+        This project is a Fusion Engine for POIs v0.3
+    </description>
+	
+  <!-- set global properties for this build -->
+  <property name="src.dir" location="src"/>
+  <property name="build.dir" location="build"/>
+  <property name="lib.dir"   location="lib"/>
+  <property name="web.dir"   location="frontend"/>
+  <property name="doc.dir"   location="doc"/>
+  <property name="service.dir"   location="service"/>
+  <property name="frontend.dir"   location="frontend"/>	
+  <property name="release.dir"   location="release"/>
+  <property name="fusionDir"   location="/home/bmolina/fusion"/>	
+  	
+	
+   
+	
+  <path id="classpath">
+	  	<fileset dir="${lib.dir}" includes="**/*.jar"/>
+  </path>
+
+  <target name="clean">    		
+  		<delete dir="${build.dir}"/>
+  </target>
+	
+	
+  <target name="init">    
+	    <mkdir dir="${build.dir}"/>
+	  	<mkdir dir="${build.dir}/classes-war"/>
+	  	<mkdir dir="${build.dir}/classes-jar"/>
+  </target>
+	
+	
+	<target name="compile-service" depends="clean,init" description="compile the source " >
+	    	
+	    <javac source="1.7" target="1.7" srcdir="${src.dir}" destdir="${build.dir}" classpathref="classpath"/>  	
+	  	
+	  	<copy todir="${build.dir}">
+	  	    <fileset dir="${service.dir}"/>  		
+	  	</copy>		 	
+	  	
+	  	<copy todir="${build.dir}/lib"> 
+	  	  		<fileset dir="${lib.dir}"/>
+	  	 </copy>
+	  	
+	  </target>
+	
+		
+		
+   <target name="run-service" depends="compile-service" >  	
+	       <java classname="org.upv.satrd.fic2.fe.main.FusionManager" fork="true" dir="${build.dir}">
+	       		<arg value="${fusionDir}"/>
+	       		<classpath>	  	  	  	      	  				  
+	       			<pathelement path="${build.dir}"/>
+	       			  <fileset dir="${build.dir}/lib">
+	  	  	  	        <include name="**/*.jar"/>
+	  	  	  	      </fileset>  	       	      
+	  	  	  	 </classpath>	  	  	  	 
+	       	</java>
+  </target>	
+
+	
+	
+	
+	
+	<target name="run-jar" depends="build-jar" >  	
+		    
+		
+		    <copy todir="${build.dir}">
+			    <fileset dir="${service.dir}"/>  		
+			</copy>	
+		
+			<java jar="${build.dir}/fic2_fe_v3.jar" fork="true" dir="${build.dir}">
+		       		<arg value="${fusionDir}"/>
+		       	 	 
+		       	</java>
+	  </target>	
+	
+
+   
+  <target name="compile-jar" depends="clean,init" description="compile the source " >
+		    	
+ 		<!-- In order to include the sources in the generated WAR, copy first the sources-->
+ 		<copy todir="${build.dir}/classes-jar">  	  	    
+ 			  	  	<fileset dir="${src.dir}"/>	 										
+ 		</copy>				
+		
+	   
+	 	
+	    <javac source="1.7" target="1.7" srcdir="${src.dir}" destdir="${build.dir}/classes-jar" classpathref="classpath"/>
+  </target>
+	
+
+	
+  <target name="build-jar" depends="compile-jar">
+  	    
+  	   <copy file="${service.dir}/log4j.properties" todir="${build.dir}/classes-jar"/>
+  	
+  		<jar destfile="${build.dir}/fic2_fe_v3.jar"   basedir="${build.dir}/classes-jar">
+	   	
+	   	  <fileset dir="${build.dir}/classes-jar" includes="**/*.class" />
+	   	  <zipgroupfileset dir="${lib.dir}" includes="**/*.jar" />
+
+	      <manifest>
+	         <attribute name="Main-Class" value="org.upv.satrd.fic2.fe.main.FusionManager"/>
+	      	 <attribute name="Class-Path" value="lib" />
+	      </manifest>
+
+	   </jar>
+  	
+  		
+  	
+  	
+  		<!-- Update the release dir. Copy JAR file to release, with the config files (log4j, config.xml) -->
+  		<delete dir="${release.dir}/service"/>
+  	  	<mkdir dir="${release.dir}/service"/>
+  		<copy file="${build.dir}/fic2_fe_v3.jar" todir="${release.dir}/service"/>
+
+  		<copy todir="${release.dir}/service">
+  	    	<fileset dir="${service.dir}">
+  			 <exclude name="**/*.properties"/>
+  			</fileset>
+  		</copy>	
+  	
+  	  
+   </target>	
+	
+	
+	
+	
+	
+	<target name="compile-war" depends="clean,init" description="compile the source " >
+	    	
+ 		<!-- In order to include the sources in the generated WAR, copy first the sources-->
+ 		<copy todir="${build.dir}/classes-war">  	  	    
+ 			  	  	<fileset dir="${src.dir}"/>
+ 		</copy>	
+		
+		
+ 	
+	    <javac source="1.7" target="1.7" srcdir="${src.dir}" destdir="${build.dir}/classes-war" classpathref="classpath"/>
+	  	<copy file="${web.dir}/log4j.properties" todir="${build.dir}/classes-war"/> 		  	
+	  	
+	  	<copy todir="${build.dir}/lib">  	  	    
+	  	  		<fileset dir="${lib.dir}"/>
+	  	 </copy>	  	
+	</target>
+	
+	
+	
+	
+
+
+	<target name="build-war" depends="compile-war">
+
+		<!-- In order to include the doc, copy the pdf files in the doc WebContent dir-->
+		 <copy todir="${web.dir}/WebContent/doc">  	  	    
+		 		<fileset dir="${doc.dir}"/>
+		 </copy>	
+		
+		
+	   <war destfile="${build.dir}/fic2_fe_v3_frontend.war" webxml="${web.dir}/web.xml">
+	      <fileset dir="${web.dir}/WebContent">
+	         <include name="**/*.*"/>
+	      </fileset>
+	      
+	      <lib dir="${lib.dir}"/>     
+	      
+	      <classes dir="${build.dir}/classes-war"/>
+	   </war>
+		
+		<!-- Delete the files in WebContent -->
+		<delete>
+		    <fileset dir="${web.dir}/WebContent/doc" excludes="**/*.html"/>
+		</delete>
+		
+		
+		<!-- Copy WAR file to release -->
+		<copy file="${build.dir}/fic2_fe_v3_frontend.war" todir="${release.dir}/frontend"/>
+	   
+	</target>
+	
+	
+	<target name="build-all" depends="build-war,build-jar"/>
+	
+	
+  
+	
+	
+	
+	  
+</project>

@@ -1,0 +1,190 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Fusion Engine API Test",
+        "description": "Basic API to access to POI data generated after the     fusion\n",
+        "version": "0.2.0"
+    },
+    
+    "schemes": [
+        "http"
+    ],
+    "basePath": "/fic2_fe_v3_frontend",
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/citysdk/categories/search": {
+            "get": {
+                "summary": "Show available categories",
+                "parameters": [
+                    {
+                        "name": "ocdName",
+                        "in": "query",
+                        "description": "Name of the ocd to look for",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "list",
+                        "in": "query",
+                        "description": "Currently only \"poi\" supported",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "categories"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of available categories",
+                        "schema": {
+                            "$ref": "#/definitions/categories"
+                        }
+                    },
+                    "default": {
+                        "description": "Wrong syntax"
+                    }
+                }
+            }
+        },
+        "/citysdk/pois/search": {
+            "get": {
+                "summary": "Search pois by category and (optionally) including coordinates",
+                "parameters": [
+                    {
+                        "name": "ocdName",
+                        "in": "query",
+                        "description": "Name of the ocd to look for",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "category",
+                        "in": "query",
+                        "description": "Category name. This category must be one of the set returned by /categories/search",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "coords",
+                        "in": "query",
+                        "description": "CitySDK supports two formats for providing coords:\n  - bounding box (4 values in WGS84, bottom-left & top-right [lat,lon,lat,lon])\n  - center and radius (3 values: center in WGS84 and radius [lat,lon,meters])\n",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "pois"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of pois within this category and (optionally) area",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/pois"
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Wrong syntax"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "categories": {
+            "properties": {
+                "categories": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/category"
+                    }
+                }
+            }
+        },
+        "category": {
+            "properties": {
+                "label": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/label"
+                    }
+                }
+            }
+        },
+        "label": {
+            "properties": {
+                "term": {
+                    "type": "string",
+                    "description": "Acting as key (mandatory)"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Acting as value (mandatory)"
+                },
+                "source": {
+                    "type": "string",
+                    "description": "Data source of this label"
+                }
+            }
+        },
+        "pois": {
+            "properties": {
+                "poi": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/poi"
+                    }
+                }
+            }
+        },
+        "poi": {
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "description": "ID of the POI"
+                },
+                "location": {
+                    "$ref": "#/definitions/location",
+                    "description": "Location of this POI"
+                },
+                "label": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/label"
+                    },
+                    "description": "POI data as a collection of labels"
+                }
+            }
+        },
+        "location": {
+            "properties": {
+                "point": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Point_item"
+                    }
+                }
+            }
+        },
+        "Point_item": {
+            "properties": {
+                "Point": {
+                    "$ref": "#/definitions/Point"
+                }
+            }
+        },
+        "Point": {
+            "properties": {
+                "posList": {
+                    "type": "string",
+                    "description": "WGS84 (lat,lon)"
+                }
+            }
+        }
+    }
+}

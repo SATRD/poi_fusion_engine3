@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<fusion_rules city="valencia_demo" bbox="39.445333,-0.426171,39.496086,-0.313046" fe_version="0.1">
+
+	 
+	<fusion_rule category="fallas" limit="500">
+		<general_settings>
+			<location>
+				<source>poiproxy_local_valencia</source>					
+			</location>
+			<name>
+				<source>poiproxy_local_valencia</source>				
+			</name>
+			<description>				
+				<source>poiproxy_local_valencia</source>				
+			</description>
+			<image>
+				<active>false</active>
+				<limit>10</limit>
+				<source>flickr</source>							
+			</image>
+				  
+		</general_settings>
+		<specific_settings>			
+			<max_distance>30</max_distance>			
+			<similarity_percentage>70</similarity_percentage>
+		</specific_settings>
+	</fusion_rule>
+	 
+	
+	  
+	<fusion_rule category="museum" limit="500">
+		<general_settings>
+			<location>	
+			    <source>osm</source>							
+				<source>dbpedia</source>
+			</location>
+			<name>	
+				<source>osm</source>							
+				<source>dbpedia</source>
+			</name>
+			<description>
+				<source>dbpedia</source>
+				<source>osm</source>								
+			</description>
+			<image>
+				<active>true</active>
+				<limit>10</limit>
+				<source>flickr</source>							
+			</image>				  
+		</general_settings>
+		<specific_settings>			
+			<max_distance>50</max_distance>			
+			<similarity_percentage>70</similarity_percentage>
+		</specific_settings>
+	</fusion_rule>		
+	
+	 
+	 
+	<fusion_rule category="monument" limit="500">
+		<general_settings>
+			<location>
+			    <source>poiproxy_local_valencia</source>
+				<source>osm</source>				
+				<source>dbpedia</source>
+			</location>
+			<name>
+				<source>poiproxy_local_valencia</source>
+				<source>osm</source>				
+				<source>dbpedia</source>
+			</name>
+			<description>
+				<source>dbpedia</source>
+				<source>poiproxy_local_valencia</source>
+				<source>osm</source>						
+			</description>
+			<image>
+				<active>true</active>
+				<limit>10</limit>
+				<source>flickr</source>								
+			</image>
+				  
+		</general_settings>
+		<specific_settings>			
+			<max_distance>30</max_distance>			
+			<similarity_percentage>70</similarity_percentage>
+		</specific_settings>
+	</fusion_rule>
+	
+	
+	
+	 
+	<fusion_rule category="accommodation" limit="500">
+		<general_settings>
+			<location>
+				<source>osm</source>					
+			</location>
+			<name>
+				<source>osm</source>				
+			</name>
+			<description>
+				<source>osm</source>						
+			</description>
+			<image>
+				<active>true</active>
+				<limit>10</limit>
+				<source>flickr</source>
+				<source>panoramio</source>				
+			</image>
+				  
+		</general_settings>
+		<specific_settings>			
+			<max_distance>30</max_distance>			
+			<similarity_percentage>70</similarity_percentage>
+		</specific_settings>
+	</fusion_rule>
+	
+
+</fusion_rules>

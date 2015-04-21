@@ -1,0 +1,38 @@
+
+
+{
+  "categories": [
+    {
+      "label": [
+        {
+          "term": "primary",
+          "value": "accommodation"
+        }
+      ]
+    },
+    {
+      "label": [
+        {
+          "term": "primary",
+          "value": "fallas"
+        }
+      ]
+    },
+    {
+      "label": [
+        {
+          "term": "primary",
+          "value": "monument"
+        }
+      ]
+    },
+    {
+      "label": [
+        {
+          "term": "primary",
+          "value": "museum"
+        }
+      ]
+    }
+  ]
+}

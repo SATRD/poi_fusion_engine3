@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<configuration>
+  <DB>
+    <connectionString>jdbc:oracle:thin:@vallibona.prodevelop.es:1521:vallibona</connectionString>
+    <driverName>oracle.jdbc.OracleDriver</driverName>
+	<user>CSCFUSION</user>
+    <pwd>CSCFUSION</pwd>
+    
+    <host>vallibona.prodevelop.es</host>
+    <port>1521</port>
+    <name>vallibona</name>
+    
+    <resetScript>db/fe_ocd_reset_oracle.sql</resetScript>
+    <scriptSeparator>/</scriptSeparator>
+    <geometryFromLonLatSrid>MDSYS.SDO_GEOMETRY(2001, {2}, MDSYS.SDO_POINT_TYPE({0}, {1}, NULL), NULL, NULL)</geometryFromLonLatSrid>
+    <lonFromPoint>{0}.sdo_point.x</lonFromPoint>
+    <latFromPoint>{0}.sdo_point.y</latFromPoint>
+  </DB>
+  <platform>linux</platform>
+  <installDir>/var/www/projects/ficontent/</installDir>
+  <mappingDir>/var/www/projects/ficontent/</mappingDir>
+  <fusionDir>/var/www/projects/ficontent/</fusionDir>
+  <apiRulesDir>/var/www/projects/ficontent/</apiRulesDir>
+</configuration>

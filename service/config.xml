@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<configuration>
+  <DB>
+    
+    <platform>postgresql</platform>
+    <driverName>org.postgresql.Driver</driverName>
+	<user>postgres</user>
+    <pwd></pwd>
+    
+    <host>127.0.0.1</host>
+    <port>5432</port>
+    <name>ocd_base</name>    
+    
+    <resetOCDPOIScript>fe_ocd_reset_poi_data_postgres.sql</resetOCDPOIScript>
+    
+    <scriptSeparator>;</scriptSeparator>
+    
+    <geometryFromLonLatSrid>ST_SetSRID(ST_MakePoint({0}, {1}), {2})</geometryFromLonLatSrid>
+    <lonFromPoint>ST_X({0})</lonFromPoint>
+    <latFromPoint>ST_Y({0})</latFromPoint>
+    
+  </DB>   
+  
+  <logFile>/home/bmolina/fusion/fic2_fe_v3_service.log</logFile>
+  
+  
+</configuration>

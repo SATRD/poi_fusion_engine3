@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<configuration>
+  <DB>
+    <!--   <connectionString>jdbc:postgresql://127.0.0.1:5432/ocd_base</connectionString> -->
+    
+    <!--  postgresql or oracle. This goes directly into the connectionstring -->
+    <platform>postgresql</platform>
+    <driverName>org.postgresql.Driver</driverName>
+	<user>postgres</user>
+    <pwd></pwd>
+    
+    <host>127.0.0.1</host>
+    <port>5432</port>
+    <name>ocd_base</name>
+    
+    <resetBaseScript>fe_base_reset_postgres.sql</resetBaseScript>
+    <resetOCDScript>fe_ocd_reset_postgres.sql</resetOCDScript>
+    <enable2DScript>enable_postgis.sql</enable2DScript>
+    <scriptSeparator>;</scriptSeparator>
+    
+    <geometryFromLonLatSrid>ST_SetSRID(ST_MakePoint({0}, {1}), {2})</geometryFromLonLatSrid>
+    <lonFromPoint>ST_X({0})</lonFromPoint>
+    <latFromPoint>ST_Y({0})</latFromPoint>
+    
+  </DB>  
+  
+  <mappingDir>/config/categoryMapping/</mappingDir>
+  <fusionDir>/config/fusionRules/</fusionDir>
+  <apiRulesDir>/config/apiRules/</apiRulesDir>
+  <dbScriptsDir>/config/dbScripts/</dbScriptsDir>
+  <logDir>/home/fusion</logDir>
+  
+  <firstTime>yes</firstTime>
+</configuration>

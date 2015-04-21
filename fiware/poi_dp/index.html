@@ -1,0 +1,21 @@
+<html>
+<head>
+<script src="fe_to_poi_dp.js"></script>
+</head>
+<body>
+<table>
+<tr><td>POI_DP_BASE_URL</td><td><input type="text" value="http://localhost/poi_dp/" id="poi-dp-base-url" size="40"/></td></tr>
+<tr><td>FE_CITYSDK_BASE_URL</td><td><input type="text" value="http://localhost:8080/fic2_fe_v3_frontend/citysdk/" id="fe-citysdk-base-url" size="40"/></td></tr>
+<tr><td>OCDB_CSV_NAMES</td><td><input type="text" value="valencia_demo, tenerife_demo" id="ocdb-names" size="40"/></td></tr>
+</table>
+<br/>
+<input type="button" onclick="start();" value="Start!" />
+<br/><br/>
+<span style="" id="progress_text"></span>
+<br/>
+<div style="width: 300px; height: 20px; background-color: #ccc; position: relative;" id="progress-bar">
+	<div style="width: 0px; height: 20px; background-color: #77ff77; position: aboslute; top: 0; left: 0;"></div>
+	<div style="width: 300px; height: 20px; position: absolute; top: 0; left: 0; text-align: center;"></div>
+</div>
+</body>
+</html>
