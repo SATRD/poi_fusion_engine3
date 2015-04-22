@@ -37,7 +37,7 @@ cp fic2_fe_v3_frontend.war /var/lib/tomcat7/webapps/
 sleep 10
 # Change from tomcat8 to 7
 sed -i 's/tomcat8/tomcat7/' /var/lib/tomcat7/webapps/fic2_fe_v3_frontend/config/dbScripts/ocd_valencia_demo.sql
-sed -i 's/tomcat8/tomcat7/' /var/lib/tomcat7/webapps/fic2_fe_v3_frontend/config/dbScripts/tenerife_valencia_demo.sql
+sed -i 's/tomcat8/tomcat7/' /var/lib/tomcat7/webapps/fic2_fe_v3_frontend/config/dbScripts/ocd_tenerife_demo.sql
 # Initialize the app with demo data (valencia_demo and tenerife_demo). This may take a while
 wget http://localhost:8080/fic2_fe_v3_frontend/init.jsp
 
