@@ -14,8 +14,8 @@ cd /
 
 
 # get the whole project from github
-#rm -rf poi_fusion_engine3
-#git clone https://github.com/satrd/poi_fusion_engine3
+rm -rf poi_fusion_engine3
+git clone https://github.com/satrd/poi_fusion_engine3
 
 # The FE consists of two parts: (a) FE frontent and (b) FE service. Both are packed in the release dir
 
