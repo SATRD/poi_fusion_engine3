@@ -21,7 +21,7 @@
     
   </DB>   
   
-  <logFile>/home/bmolina/fusion/fic2_fe_v3_service.log</logFile>
+  <logFile>/home/fusion/fic2_fe_v3_service.log</logFile>
   
   
 </configuration>
