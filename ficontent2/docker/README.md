@@ -13,7 +13,8 @@ If you plan to test the FE with Docker, you should follow these steps:
 		`docker build -t poi-fusion-engine3 .`
 	
 3.	Run Docker Image  
-	-	If you built the image locally (step 2) execute `docker run -ti -p 8080:8080 --name fe3 poi-fusion-engine3`  
+	-	If you built the image locally (step 2) execute:  
+		`docker run -ti -p 8080:8080 --name fe3 poi-fusion-engine3`  
 	-	If you want to run the last build from the docker hub execute:  
 		`docker run -ti -p 8080:8080 --name fe3 enolgor/poi-fusion-engine3`
 	
