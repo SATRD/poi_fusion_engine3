@@ -20,5 +20,5 @@ If you plan to test the FE with Docker, you should follow these steps:
 	
 4.	To test and use the fusion engine go to [http://localhost:8080/fic2_fe_v3_frontend](http://localhost:8080/fic2_fe_v3_frontend)  
 
-5.	To terminate the container press `Ctrl+p` `Ctrol+q` to unattach and then execute:  
+5.	To terminate the container press `Ctrl+P` `Ctrl+Q` to unattach and then execute:  
 	`docker rm -f fe3`  
