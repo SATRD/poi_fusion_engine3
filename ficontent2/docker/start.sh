@@ -3,7 +3,7 @@
 /etc/init.d/postgresql start
 /etc/init.d/tomcat7 start
 sleep 5
-wget http://localhost:8080/fic2_fe_v3_frontend/init.jsp
+wget -q http://localhost:8080/fic2_fe_v3_frontend/init.jsp > /dev/null
 # 2. Start the FE service component. As it is and endless loop it can serve for the last line
 cd /
 cd poi_fusion_engine3/release/service
