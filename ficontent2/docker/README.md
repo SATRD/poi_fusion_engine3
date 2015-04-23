@@ -13,11 +13,11 @@ If you plan to test the FE with Docker, you should follow these steps:
 		`docker build -t poi-fusion-engine3 .`
 	
 3.	Run Docker Image  
-	-	If you built the image locally (step 2) execute `docker run -p 8080:8080 --name fe3 poi-fusion-engine3`  
+	-	If you built the image locally (step 2) execute `docker run -ti -p 8080:8080 --name fe3 poi-fusion-engine3`  
 	-	If you want to run the last build from the docker hub execute:  
-		`docker run -p 8080:8080 --name fe3 enolgor/poi-fusion-engine3`
+		`docker run -ti -p 8080:8080 --name fe3 enolgor/poi-fusion-engine3`
 	
 4.	To test and use the fusion engine go to [http://localhost:8080/fic2_fe_v3_frontend](http://localhost:8080/fic2_fe_v3_frontend)  
 
-5.	To terminate the image execute:  
+5.	To terminate the container press `Ctrl+p` `Ctrol+q` to unattach and then execute:  
 	`docker rm -f fe3`  
