@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <fusion_rules city="tenerife_demo" bbox="27.964418,-16.964231,28.647544,-16.055112" fe_version="1.0">
-	<fusion_rule category="museum" limit="50">
+
+	<fusion_rule category="museum" limit="150">
 		<general_settings>
 			<location>
 				<source>poiproxy_local_tenerife</source>				
@@ -26,7 +27,7 @@
 		</specific_settings>
 	</fusion_rule>
 	
-	<fusion_rule category="tourist_info" limit="50">
+	<fusion_rule category="tourist_info" limit="150">
 		<general_settings>
 			<location>
 				<source>poiproxy_local_tenerife</source>					
@@ -50,7 +51,7 @@
 		</specific_settings>
 	</fusion_rule>
 	
-	<fusion_rule category="accommodation" limit="50">
+	<fusion_rule category="accommodation" limit="150">
 		<general_settings>
 			<location>
 				<source>poiproxy_local_tenerife</source>					
@@ -76,7 +77,7 @@
 	</fusion_rule>
 	
 	
-	<fusion_rule category="monument" limit="50">
+	<fusion_rule category="monument" limit="150">
 		<general_settings>
 			<location>
 				<source>poiproxy_local_tenerife</source>				
@@ -106,7 +107,7 @@
 	
 
  
-	<fusion_rule category="shop" limit="50">
+	<fusion_rule category="shop" limit="150">
 		<general_settings>
 			<location>								
 				<source>osm</source>
@@ -131,7 +132,57 @@
 			<max_distance>30</max_distance>			
 			<similarity_percentage>70</similarity_percentage>
 		</specific_settings>
-	</fusion_rule>		
+	</fusion_rule>	
+	
+	<fusion_rule category="culture" limit="150">
+		<general_settings>
+			<location>
+				<source>poiproxy_local_tenerife</source>					
+			</location>
+			<name>
+				<source>poiproxy_local_tenerife</source>				
+			</name>
+			<description>
+				<source>poiproxy_local_tenerife</source>						
+			</description>
+			<image>
+				<active>true</active>
+				<limit>10</limit>
+				<source>flickr</source>
+				<source>panoramio</source>				
+			</image>
+				  
+		</general_settings>
+		<specific_settings>			
+			<max_distance>30</max_distance>			
+			<similarity_percentage>70</similarity_percentage>
+		</specific_settings>
+	</fusion_rule>	
+	
+	<fusion_rule category="security" limit="150">
+		<general_settings>
+			<location>
+				<source>poiproxy_local_tenerife</source>					
+			</location>
+			<name>
+				<source>poiproxy_local_tenerife</source>				
+			</name>
+			<description>
+				<source>poiproxy_local_tenerife</source>						
+			</description>
+			<image>
+				<active>true</active>
+				<limit>10</limit>
+				<source>flickr</source>
+				<source>panoramio</source>				
+			</image>
+				  
+		</general_settings>
+		<specific_settings>			
+			<max_distance>30</max_distance>			
+			<similarity_percentage>70</similarity_percentage>
+		</specific_settings>
+	</fusion_rule>
 
 	
 
