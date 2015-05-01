@@ -45,7 +45,8 @@
 			
 			String cat = categoryList[p];
 			
-			ArrayList<POI> small_poiList = POI.getPOIListByCategoryName(con, cat, limit,null);   
+			ArrayList<POI> small_poiList = POI.getPOIListByCategoryName(con, cat, limit,null); 
+			
 			if ( (small_poiList!=null) && (!small_poiList.isEmpty()) ){				
 				poiList.addAll(small_poiList);
 			}
@@ -55,6 +56,8 @@
 	}else{
 		out.println("error");
 	}
+	
+	
 	
 	//ArrayList<POI> poiList = new ArrayList<POI>();
 	//poiList = POI.getPOIList(con, null);
@@ -67,6 +70,8 @@
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
+    <link rel='stylesheet' type='text/css' href="../css/main.css">
+  	<link rel='stylesheet' type='text/css' href="../css/table.css"> 
     <style>
       html { height: 100% }
       body { height: 100%; margin: 0; padding: 0 }
@@ -216,11 +221,20 @@
             infowindow<%out.print(i);%>.open(map, marker<%out.print(i);%>);
           });
         
-        var contentString<%out.print(i);%> = "<div><table style='border: 1px solid black;'>"+
-        "<tr><td>TERM</td><td>VALUE</td></tr>"+
-        "<tr><td>name</td><td><%out.print(name);%></td></tr>"+
-        "<tr><td>latitude</td><td><%out.print(poi.getLatitude());%></td></tr>"+
-        "<tr><td>longitude</td><td><%out.print(poi.getLongitude());%></td></tr>"+        
+        
+        
+        
+        var contentString<%out.print(i);%> = "<table class='' style='margin: 20px 0 10px 0;' cellspacing='0' border='1'>"+
+        "<thead style='display:block;'>"+
+        "<tr>"+
+          "<th width='60'>Term</th>"+
+          "<th width='400'>Value</th>"+            
+        "</tr>"+
+      "</thead>"+
+     "<tbody  style='display:block; <% if (poiList.size() >14) { %> height:500px; overflow-y:scroll;<% } %>'>"+
+      "<tr><td width='60'>name</td><td width='400'><%out.print(name);%></td></tr>"+
+      "<tr  class='odd'><td>latitude</td><td><%out.print(poi.getLatitude());%></td></tr>"+
+      "<tr ><td>longitude</td><td><%out.print(poi.getLongitude());%></td></tr>"+            
 		        "<% for (int k=0;k<poilabelList.size()-2;k++){
 					POILabel poilabel = poilabelList.get(k);
 					String term = LabelType.getLabelTypeClassById(con, poilabel.getLabelTypeId(),null).getName();
@@ -239,11 +253,16 @@
 					
 					//exclude the name and position from poilabel
 					if ( (!term.equalsIgnoreCase("name"))  && (!term.equalsIgnoreCase("position"))   ) {
-						out.print("<tr><td>"+term+"</td><td>"+labval+"</td></tr>");  
+						String aux = "<tr>";
+						if (k%2 !=0 )aux = "<tr class='odd'>";
+						if (term.equalsIgnoreCase("image"))
+							out.print(aux+"<td>"+term+"</td><td><img src='"+labval+"' height='200' width='200' onclick=window.open('"+labval+"') /></td></tr>");
+						else
+							out.print(aux+"<td>"+term+"</td><td>"+labval+"</td></tr>");
 					}
 				}%>"+				
         "<tr><td></td><td></td></tr>"+
-        "</table></div>" ;
+        "</tbody></table></div>" ;
         
         var infowindow<%out.print(i);%> = new google.maps.InfoWindow({
             content: contentString<%out.print(i);%>
@@ -260,7 +279,7 @@
     </script>
   </head>
   <body bgcolor="#f9e283">
-  	<p>&nbsp;&nbsp; Found <%out.println(poiList.size()-2); %>POIS from selected categories </p>
+  	<p>&nbsp;&nbsp; Found <%out.println(poiList.size()); %>POIS from selected categories </p>
     <div id="map_canvas"></div>
   </body>
 </html>
