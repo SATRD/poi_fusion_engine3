@@ -31,6 +31,8 @@ chmod a+rwx /home/fusion
 # 1. Start the frontend
 
 service tomcat7 restart
+cd poi_fusion_engine3
+ant
 cd poi_fusion_engine3/release/frontend
 cp fic2_fe_v3_frontend.war /var/lib/tomcat7/webapps/
 # Sleep for a while so that Tomcat can deploy the WAR file
