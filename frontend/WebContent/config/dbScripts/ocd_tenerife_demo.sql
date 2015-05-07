@@ -713,7 +713,7 @@ COPY licensesource (sourceid, licenseid) FROM stdin;
 --
 
 COPY ocd (id, name, city, description, fusionrules, accesskey, fusiondate, status) FROM stdin;
-1	tenerife_demo	1		/var/lib/tomcat8/webapps/fic2_fe_v3_frontend/config/fusionRules/FusionRules_Tenerife2.xml	tenerife_demo	\N	7
+1	tenerife_demo	1		/var/lib/tomcat8/webapps/fic2_fe_v3_frontend/config/fusionRules/FusionRules_Tenerife.xml	tenerife_demo	\N	7
 \.
 
 
