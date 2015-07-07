@@ -16,7 +16,7 @@ If you plan to test the FE with Docker, you should follow these steps:
 	-	If you built the image locally (step 2) execute:  
 		`sudo docker run --privileged=true -ti -p 8080:8080 --name fe3 poi-fusion-engine3`  
 	-	If you want to run the last build from the docker hub execute:  
-		`sudo docker run --privileged=true -ti -p 8080:8080 --name fe3 enolgor/poi-fusion-engine3`
+		`sudo docker run --privileged=true -ti -p 8080:8080 --name fe3 benmomo/poi-fusion-engine3`
 	
 4.	To test and use the fusion engine go to [http://localhost:8080/fic2_fe_v3_frontend](http://localhost:8080/fic2_fe_v3_frontend)  
 
