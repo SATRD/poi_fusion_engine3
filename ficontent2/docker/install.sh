@@ -24,6 +24,10 @@ mv /poi_fusion_engine3/ficontent2/docker/pg_hba.conf /etc/postgresql/9.3/main/pg
 chown postgres:postgres /etc/postgresql/9.3/main/pg_hba.conf
 service postgresql restart
 
+# Change the ROOT/index file so that it points by default to our WAR
+mv /poi_fusion_engine3/ficontent2/docker/index.html /var/lib/tomcat7/webapps/ROOT/index.html
+chmod a+rw /var/lib/tomcat7/webapps/ROOT/index.html
+
 # 0. Prepare the fusion log dir (for the FE service)
 mkdir /home/fusion
 chmod a+rwx /home/fusion
